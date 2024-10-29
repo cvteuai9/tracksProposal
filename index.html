@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>求婚大作戰</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="page1" class="certificate">
+        <h1>結婚證書</h1>
+        <p>茲證明</p>
+        <p>XXX 與 XXX</p>
+        <p>已於 2024 年正式結為夫妻</p>
+        <a href="#" class="button" onclick="showPage2(); return false;">點擊查看更多</a>
+    </div>
+
+    <div id="page2">
+        <div class="heart">❤</div>
+        <h1>永結同心</h1>
+        <p>讓我們一起譜寫未來的故事</p>
+        <a href="#" class="button" onclick="showPage1(); return false;">返回</a>
+    </div>
+
+    <script>
+        function showPage2() {
+            document.getElementById('page1').style.display = 'none';
+            document.getElementById('page2').style.display = 'block';
+        }
+
+        function showPage1() {
+            document.getElementById('page2').style.display = 'none';
+            document.getElementById('page1').style.display = 'block';
+        }
+    </script>
+</body>
+
+</html>
