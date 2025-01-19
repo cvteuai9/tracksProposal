@@ -1,42 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>求婚大作戰</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-    <div id="page1" class="certificate">
-        <!-- <audio autoplay controls src="music/test_music.mp3"></audio> -->
-        <h1>結婚證書</h1>
-        <p>茲證明</p>
-        <p>XXX 與 XXX</p>
-        <p>已於 2024 年正式結為夫妻</p>
-        <a href="#" class="button" onclick="showPage2(); return false;">點擊查看更多</a>
-        <img src="./IMG_5354.PNG" alt="" style="height: 25%; width: 25%;">
-    </div>
-
-    <div id="page2">
-        <div class="heart">❤</div>
-        <h1>永結同心</h1>
-        <p>讓我們一起譜寫未來的故事</p>
-        <a href="#" class="button" onclick="showPage1(); return false;">返回</a>
-    </div>
-
-    <script>
-        function showPage2() {
-            document.getElementById('page1').style.display = 'none';
-            document.getElementById('page2').style.display = 'block';
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Page with background image" />
+    <title>Background Image Page</title>
+    <style>
+        html,body{
+            padding: 0;
+            margin: 0;
         }
-
-        function showPage1() {
-            document.getElementById('page2').style.display = 'none';
-            document.getElementById('page1').style.display = 'block';
-        }
-    </script>
-</body>
-
+      div {
+        background-image: url("IMG_5354.PNG");
+        background-size: contain;  /* Better than contain for full coverage */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: #f0f0f0;  /* Fallback color */
+        min-height: 100vh;  /* Ensures full viewport height coverage */
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+        你好
+    </div>
+  </body>
 </html>
