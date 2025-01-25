@@ -4,32 +4,53 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Page with background image" />
-    <title>Background Image Page</title>
+    <meta name="description" content="Proposal Page with Background Image" />
+    <title>Proposal Page</title>
     <style>
         html,
         body {
             padding: 0;
             margin: 0;
+            height: 100%;
         }
 
-        div {
+        .container {
             background-image: url("1.png");
-            background-size: contain;
-            /* Better than contain for full coverage */
-            background-position: top;
+            background-size: cover;
+            background-position: center;
             background-repeat: no-repeat;
-            background-color: #f0f0f0;
-            /* Fallback color */
-            min-height: 100vh;
-            /* Ensures full viewport height coverage */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
             width: 100%;
+        }
+
+        .content {
+            text-align: center;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .content button {
+            font-size: 1.5rem;
+            padding: 0.75rem 1.5rem;
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
         }
     </style>
 </head>
 
 <body>
-    <div>
+    <div class="container">
 
     </div>
 </body>
