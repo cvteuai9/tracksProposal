@@ -28,13 +28,17 @@
         background-repeat: no-repeat;
         display: block;
         height: 100%; */
-        background-image: url("./img/1170x2289.png");
-        background-size: 100% 100%; /* 或 cover，確保完整覆蓋 */
+        background-image: url("./img/1170_2100.png");
+        background-size: cover; /* 或 cover，確保完整覆蓋 */
+        background-position: top;
         width: 100svw;
         height: 100svh; /* 使用 vh 而不是百分比 */
         position: fixed; /* 防止滾動 */
         top: 0;
         left: 0;
+        .pre-page-img{
+          height: 100svh;
+        }
         .btn-area {
           position: absolute;
           bottom: 10%;
@@ -74,6 +78,7 @@
   <body>
     <audio class="music pause" src="./music/main.mp3"></audio>
     <div class="pre-page">
+      <!-- <img class="pre-page-img" src="./img/1170x2289.png" alt=""> -->
       <div class="btn-area">
         <img class="start-btn" src="./img/start.png" alt="" />
         <img class="pause-btn" src="./img/pause.png" alt="" />
