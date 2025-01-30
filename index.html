@@ -1,59 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Proposal Page with Background Image" />
     <title>Proposal Page</title>
     <style>
-        html,
-        body {
-            padding: 0;
-            margin: 0;
-            height: 100svh;
-            width: 100svw;
+      html,
+      body {
+        padding: 0;
+        margin: 0;
+        height: 100svh;
+      }
+      .active {
+        display: block;
+      }
+      .deactive {
+        display: none;
+      }
+      .pre-page {
+        background-image: url("./img/pre-page.png");
+        background-size: cover;
+        background-position: top;
+        background-repeat: no-repeat;
+        display: block;
+        height: 100%;
+        .btn-area {
+          position: absolute;
+          bottom: 93px;
+          right: 161px;
+          img {
+            width: 56px;
+            height: 56px;
+          }
+          .start-btn{
+            display: block;
+          }
+          .pause-btn {
+            display: none;
+          }
         }
-
-        .container {
-            background-image: url("768_1024.png");
-            background-size: cover;
-            background-position: top;
-            background-repeat: no-repeat;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-            width:100%;
+        .next {
+          position: absolute;
+          bottom: 100px;
+          right: 69px;
+          img {
+            width: 25px;
+            height: 36px;
+          }
         }
-
-        .content {
-            text-align: center;
-            color: white;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-        }
-
-        .content h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .content button {
-            font-size: 1.5rem;
-            padding: 0.75rem 1.5rem;
-            background-color: #ff69b4;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
+      }
+      .proposal-page {
+        background-image: url("./img/proposal-page.png");
+        background-size: cover;
+        background-position: top;
+        background-repeat: no-repeat;
+        height: 100%;
+        display: none;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-    <div class="container">
-
+  <body>
+    <audio class="music pause" src="./music/main.mp3"></audio>
+    <div class="pre-page">
+      <div class="btn-area">
+        <img class="start-btn" src="./img/start.png" alt="" />
+        <img class="pause-btn" src="./img/pause.png" alt="" />
+      </div>
+      <div class="next">
+        <img class="next-btn" src="./img/next.png" alt="" />
+      </div>
     </div>
-</body>
+    <div class="proposal-page"></div>
+    <div class="success-page"></div>
+  </body>
+  <script>
+    const music = document.querySelector(".music");
+    const btnArea = document.querySelector(".btn-area");
+    const startBtn = document.querySelector(".start-btn");
+    const pauseBtn = document.querySelector(".pause-btn");
+    const nextBtn = document.querySelector(".next-btn");
+    const prePage = document.querySelector(".pre-page");
+    const proposalPage = document.querySelector(".proposal-page");
 
+    btnArea.addEventListener("click", () => {
+      if (music.classList.contains("pause")) {
+        music.play();
+        music.classList.remove("pause");
+        music.classList.add("start");
+        startBtn.style.display = "none";
+        pauseBtn.style.display = "block";
+      } else if (music.classList.contains("start")) {
+        music.pause();
+        music.classList.remove("start");
+        music.classList.add("pause");
+        startBtn.style.display = "block";
+        pauseBtn.style.display = "none";
+      }
+    });
+
+    // go to proposal page
+    nextBtn.addEventListener("click", () => {
+      prePage.style.display = "none";
+      proposalPage.style.display = "block";
+    });
+  </script>
 </html>
