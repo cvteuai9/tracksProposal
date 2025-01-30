@@ -2,7 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <meta name="description" content="Proposal Page with Background Image" />
     <title>Proposal Page</title>
     <style>
@@ -10,7 +13,7 @@
       body {
         padding: 0;
         margin: 0;
-        height: 100svh;
+        /* height: 100svh; */
       }
       .active {
         display: block;
@@ -19,21 +22,28 @@
         display: none;
       }
       .pre-page {
-        background-image: url("./img/pre-page.png");
+        /* background-image: url("./img/pre-page-390x844.png");
         background-size: cover;
         background-position: top;
         background-repeat: no-repeat;
         display: block;
-        height: 100%;
+        height: 100%; */
+        background-image: url("./img/pre-page-390x763.png");
+        background-size: 100% 100%; /* 或 cover，確保完整覆蓋 */
+        width: 100svw;
+        height: 100svh; /* 使用 vh 而不是百分比 */
+        position: fixed; /* 防止滾動 */
+        top: 0;
+        left: 0;
         .btn-area {
           position: absolute;
-          bottom: 93px;
-          right: 161px;
+          bottom: 10%;
+          right: 40%;
           img {
             width: 56px;
             height: 56px;
           }
-          .start-btn{
+          .start-btn {
             display: block;
           }
           .pause-btn {
@@ -42,8 +52,8 @@
         }
         .next {
           position: absolute;
-          bottom: 100px;
-          right: 69px;
+          bottom: 11%;
+          right: 18%;
           img {
             width: 25px;
             height: 36px;
@@ -55,7 +65,7 @@
         background-size: cover;
         background-position: top;
         background-repeat: no-repeat;
-        height: 100%;
+        height: 100svh;
         display: none;
       }
     </style>
