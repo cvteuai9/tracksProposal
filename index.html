@@ -22,15 +22,16 @@
         display: none;
       }
       .pre-page {
+        display: block;
         background-image: url("./img/pre_page.png");
-        background-size: cover; 
+        background-size: cover;
         background-position: top;
         width: 100svw;
-        height: 100svh; 
-        position: fixed; 
+        height: 100svh;
+        position: fixed;
         top: 0;
         left: 0;
-        .pre-page-img{
+        .pre-page-img {
           height: 100svh;
         }
         .btn-area {
@@ -59,12 +60,68 @@
         }
       }
       .proposal-page {
-        background-image: url("./img/success_align.png");
+        background-image: url("./img/proposal.png");
         background-size: cover;
         background-position: top;
         background-repeat: no-repeat;
+        width: 100svw;
         height: 100svh;
+        position: fixed;
+        top: 0;
+        left: 0;
         display: none;
+        img {
+          position: absolute;
+        }
+        .proposal {
+          display: block;
+          .blue {
+            width: 170px;
+            height: 218px;
+            top: 14%;
+            right: 26.5%;
+          }
+          .blue_bear {
+            width: 81px;
+            top: 54.5%;
+            left: 40.5%;
+          }
+          .ido {
+            img {
+              width: 126px;
+              top: 62%;
+              left: 34.9%;
+            }
+          }
+        }
+        .success {
+          display: none;
+          .wedding_dress {
+            width: 170px;
+            top: 14%;
+            right: 26.5%;
+          }
+          .wedding_bear {
+            width: 81px;
+            top: 54.5%;
+            left: 40.5%;
+          }
+          .text {
+            width: 190px;
+            top: 61.5%;
+            left: 27%;
+          }
+          .girl_name {
+            width: 44px;
+            bottom: 24.5%;
+            left: 20.5%;
+          }
+          .boy_name {
+            width: 44px;
+            bottom: 24.5%;
+            right: 31%;
+          }
+        }
       }
     </style>
   </head>
@@ -72,7 +129,6 @@
   <body>
     <audio class="music pause" src="./music/main.mp3"></audio>
     <div class="pre-page">
-      <!-- <img class="pre-page-img" src="./img/1170x2289.png" alt=""> -->
       <div class="btn-area">
         <img class="start-btn" src="./img/start.png" alt="" />
         <img class="pause-btn" src="./img/pause.png" alt="" />
@@ -81,38 +137,61 @@
         <img class="next-btn" src="./img/next.png" alt="" />
       </div>
     </div>
-    <div class="proposal-page"></div>
-    <div class="success-page"></div>
+    <div class="proposal-page">
+      <div class="proposal">
+        <img class="blue" src="./img/blue.png" alt="" />
+        <img class="blue_bear" src="./img/blue_bear.png" alt="" />
+        <div class="ido">
+          <img src="./img/i_do.png" alt="" />
+        </div>
+      </div>
+
+      <div class="success">
+        <img class="wedding_dress" src="./img/wedding_dress.png" alt="" />
+        <img class="wedding_bear" src="./img/wedding_bear.png" alt="" />
+        <img class="text" src="./img/text.png" alt="" />
+        <img class="girl_name" src="./img/g_name.png" alt="" />
+        <img class="boy_name" src="./img/b_name.png" alt="" />
+      </div>
+    </div>
+    <script>
+      const music = document.querySelector(".music");
+      const btnArea = document.querySelector(".btn-area");
+      const startBtn = document.querySelector(".start-btn");
+      const pauseBtn = document.querySelector(".pause-btn");
+      const nextBtn = document.querySelector(".next-btn");
+      const prePage = document.querySelector(".pre-page");
+      const proposalPage = document.querySelector(".proposal-page");
+      const ido = document.querySelector(".ido");
+      const proposalItems = document.querySelector('.proposal')
+      const successItems = document.querySelector('.success')
+
+      btnArea.addEventListener("click", () => {
+        if (music.classList.contains("pause")) {
+          music.play();
+          music.classList.remove("pause");
+          music.classList.add("start");
+          startBtn.style.display = "none";
+          pauseBtn.style.display = "block";
+        } else if (music.classList.contains("start")) {
+          music.pause();
+          music.classList.remove("start");
+          music.classList.add("pause");
+          startBtn.style.display = "block";
+          pauseBtn.style.display = "none";
+        }
+      });
+
+      // go to proposal page
+      nextBtn.addEventListener("click", () => {
+        prePage.style.display = "none";
+        proposalPage.style.display = "block";
+      });
+
+      ido.addEventListener("click", () => {
+        proposalItems.style.display = 'none'
+        successItems.style.display = 'block'
+      });
+    </script>
   </body>
-  <script>
-    const music = document.querySelector(".music");
-    const btnArea = document.querySelector(".btn-area");
-    const startBtn = document.querySelector(".start-btn");
-    const pauseBtn = document.querySelector(".pause-btn");
-    const nextBtn = document.querySelector(".next-btn");
-    const prePage = document.querySelector(".pre-page");
-    const proposalPage = document.querySelector(".proposal-page");
-
-    btnArea.addEventListener("click", () => {
-      if (music.classList.contains("pause")) {
-        music.play();
-        music.classList.remove("pause");
-        music.classList.add("start");
-        startBtn.style.display = "none";
-        pauseBtn.style.display = "block";
-      } else if (music.classList.contains("start")) {
-        music.pause();
-        music.classList.remove("start");
-        music.classList.add("pause");
-        startBtn.style.display = "block";
-        pauseBtn.style.display = "none";
-      }
-    });
-
-    // go to proposal page
-    nextBtn.addEventListener("click", () => {
-      prePage.style.display = "none";
-      proposalPage.style.display = "block";
-    });
-  </script>
 </html>
