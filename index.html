@@ -15,6 +15,49 @@
         margin: 0;
         /* height: 100svh; */
       }
+      #progress {
+        position: absolute;
+        bottom: 16.5%;
+        left: 16%;
+        -webkit-appearance: none; /* 隱藏預設樣式 */
+        appearance: none;
+        width: 65%;
+        height: 1px;
+        border-radius: 5px;
+        background: #00000031; /* 進度條漸變色 */
+        outline: none;
+        cursor: pointer;
+        transition: background 0.2s;
+        z-index: 2;
+      }
+
+      /* 拖動點樣式 */
+      #progress::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        position: relative;
+        top: -1px;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #000000; /* 圓點顏色 */
+        cursor: pointer;
+      }
+
+      #progress::-moz-range-thumb {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background: #000000;
+        border: 2px solid white;
+        cursor: pointer;
+      }
+
+      #progress::-webkit-slider-runnable-track {
+        height: 6px;
+        border-radius: 5px;
+      }
+
       .active {
         display: block;
       }
@@ -23,7 +66,7 @@
       }
       .pre-page {
         display: block;
-        background-image: url("./img/pre_page_0204.png");
+        background-image: url("./img/pre_page_final.png");
         background-size: cover;
         background-position: top;
         width: 100svw;
@@ -127,7 +170,9 @@
   </head>
 
   <body>
-    <audio class="music pause" src="./music/main.mp3"></audio>
+    <audio id="audio" class="music pause" src="./music/main.mp3"></audio>
+    <input type="range" id="progress" value="0" max="100" step="0.1" />
+
     <div class="pre-page">
       <div class="btn-area">
         <img class="start-btn" src="./img/start.png" alt="" />
@@ -163,8 +208,10 @@
       const prePage = document.querySelector(".pre-page");
       const proposalPage = document.querySelector(".proposal-page");
       const ido = document.querySelector(".ido");
-      const proposalItems = document.querySelector('.proposal')
-      const successItems = document.querySelector('.success')
+      const proposalItems = document.querySelector(".proposal");
+      const successItems = document.querySelector(".success");
+      const audio = document.getElementById("audio");
+      const progress = document.getElementById("progress");
 
       btnArea.addEventListener("click", () => {
         if (music.classList.contains("pause")) {
@@ -186,11 +233,24 @@
       nextBtn.addEventListener("click", () => {
         prePage.style.display = "none";
         proposalPage.style.display = "block";
+        progress.hidden=true
       });
 
       ido.addEventListener("click", () => {
-        proposalItems.style.display = 'none'
-        successItems.style.display = 'block'
+        proposalItems.style.display = "none";
+        successItems.style.display = "block";
+      });
+
+      // 監聽時間變化，更新進度條背景
+      audio.addEventListener("timeupdate", function () {
+        let percentage = (audio.currentTime / audio.duration) * 100;
+        progress.style.background = `linear-gradient(to right, #000 ${percentage}%, #00000031 ${percentage}%)`;
+        progress.value = percentage;
+      });
+
+      // 允許用戶拖動進度條改變播放時間
+      progress.addEventListener("input", function () {
+        audio.currentTime = (progress.value / 100) * audio.duration;
       });
     </script>
   </body>
